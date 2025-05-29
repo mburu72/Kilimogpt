@@ -1,12 +1,12 @@
 # KilimoGPT 
 
-KilimoGPT is an AI-powered chatbot specialized in answering agriculture-related questions relevant to Kenyan farmers. It wraps around the Gemini API to provide practical advice on crops, livestock, and farming techniques in English or Swahili.
+KilimoGPT is an AI-powered chatbot specialized in answering agriculture-related questions relevant to Kenyan farmers. It wraps around the Gemini API to provide practical advice on crops, livestock and farming techniques in English or Swahili.
 
 ##  Live Links
 
 - 🔗 Live App: [https://kilimogpt.netlify.app](https://kilimogpt.netlify.app)
 - 📘 API Docs: [https://kilimogpt-backend.onrender.com/docs](https://kilimogpt-backend.onrender.com/docs)
-- 💻 GitHub Repo: [https://github.com/mburu72/Kilimogpt-Assesment](https://github.com/mburu72/Kilimogpt-Assesment)
+- 💻 GitHub Repo: [https://github.com/mburu72/Kilimogpt](https://github.com/mburu72/Kilimogpt)
 
 ---
 
@@ -15,7 +15,7 @@ KilimoGPT is an AI-powered chatbot specialized in answering agriculture-related 
 ```bash
 # Clone the repo
 git clone https://github.com/mburu72/Kilimogpt-Assesment.git
-cd Kilimogpt-Assesment
+cd Kilimogpt
 
 # Create your .env file with required variables
 .env
@@ -29,8 +29,8 @@ docker run -p 8000:8000 --env-file .env kilimogpt-backend
 
 ```bash
 # Clone the repo and navigate into it
-git clone https://github.com/mburu72/Kilimogpt-Assesment.git
-cd Kilimogpt-Assesment
+git clone https://github.com/mburu72/Kilimogpt.git
+cd Kilimogpt
 
 # Create a virtual environment and activate it
 python -m venv venv
