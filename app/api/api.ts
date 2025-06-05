@@ -11,7 +11,7 @@ export async function askQuestion(question: string) {
     headers: { "Content-Type": "application/json", "X-Session-Id": sessionId },
     body: JSON.stringify({ question }),
   });
-  console.log(res);
+  
   
   if (!res.ok) {
     const errText = await res.text();
