@@ -1,7 +1,7 @@
 import { getSessionId } from "../utils/sessionId";
 import Toastify from 'toastify-js'
 const BASE_URL =
-  process.env.NEXT_PUBLIC_API_URL || "https://kilimogpt-backend.onrender.com/api/v1";
+   "https://kilimogpt-backend.onrender.com/api/v1";
 
 export async function askQuestion(question: string) {
   const sessionId = getSessionId();
@@ -12,7 +12,8 @@ export async function askQuestion(question: string) {
     headers: { "Content-Type": "application/json", "X-Session-Id": sessionId },
     body: JSON.stringify({ question }),
   });
-
+  console.log(res);
+  
   if (!res.ok) {
     const errText = await res.text();
     throw new Error(`API Error: ${res.status} - ${errText}`);
