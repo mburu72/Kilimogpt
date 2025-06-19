@@ -1,12 +1,15 @@
-from google import genai
+from langchain_google_genai import ChatGoogleGenerativeAI as genai
 from app.core.config import settings
 
-client = genai.Client(api_key=settings.GEMINI_API_KEY)
-
+#client = genai.Client(api_key=settings.GEMINI_API_KEY)
+client = genai(
+    model="gemini-2.0-flash-001",
+    google_api_key = settings.GEMINI_API_KEY
+)
 def ask_gpt(question_asked: str) -> str:
-    preamble = (
-       """
-       You are KilimoGPT, an AI farming expert for Kenya.
+    messages = [
+        ("system", """
+        You are KilimoGPT, an AI farming expert for Kenya.
 
 Provide clear, practical advice on crops, livestock and farming techniques.
 
@@ -25,14 +28,17 @@ Example response:
 - Labor: KSh 15,000
 - Total startup: ~KSh 50,000–100,000 (varies by region)."
 
-"""
-    )
-    full_prompt = preamble + question_asked
+        """)
+    ,
+        ("human", f"{question_asked}")
+    ]
+
     try:
-        response = client.models.generate_content(
-            model="gemini-2.0-flash", contents=full_prompt
-        )
-        return response.text or "No response received."
+        response = client.invoke(messages)
+        for chunk in client.stream(messages):
+            print(chunk)
+        print(response)
+        return response.content
     except Exception as e:
         print(f"Gemini API error: {e}")
         return "An error occurred while generating a response."
